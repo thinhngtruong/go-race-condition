@@ -23,13 +23,12 @@ func main() {
 	}()
 
 	var selected string
-	for i := 0; i < 2; i++ {
-		select {
-		case msg1 := <-c1:
-			selected = msg1
-		case msg2 := <-c2:
-			selected = msg2
-		}
+
+	select {
+	case msg1 := <-c1:
+		selected = msg1
+	case msg2 := <-c2:
+		selected = msg2
 	}
 
 	fmt.Println("received", selected)
